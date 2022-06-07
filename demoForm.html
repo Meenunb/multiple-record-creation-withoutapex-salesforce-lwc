@@ -1,0 +1,40 @@
+<template>
+<lightning-card title="Create Record" icon-name="standard:record">
+<div class="slds-m-around_medium">
+    <lightning-input label="Account Name" required onchange={handleNameChange} class="slds-m-bottom_x-small"></lightning-input>
+    <lightning-input label="Webiste" required  onchange={handleWebisteChange} class="slds-m-bottom_x-small website"></lightning-input>
+    <!--<lightning-input label="Industry" onchange={handleIndustryChange} class="slds-m-bottom_x-small"></lightning-input>-->
+    <template if:true={optionsIndustry.data}>
+        <lightning-combobox name="Industry" label="Industry" value={value} class="indus"
+                options={optionsIndustry.data.values} required onchange={handleIndustryChange}></lightning-combobox>
+    </template>
+    <template if:true={optionsSize.data}>
+        <lightning-combobox name="Size" label="Size" value={value}
+                options={optionsSize.data.values}  onchange={handleSizeChange}></lightning-combobox>
+    </template>
+        <template if:true={isSize1to10}>
+            <template if:true={optionsStatus.data}>
+                <lightning-combobox name="Status" label="Status" value={value}
+                        options={optionsStatus.data.values}  onchange={handleStatusChange}></lightning-combobox>
+            </template>
+        </template>
+    
+    <!-- <lightning-combobox name="progress" label="Opportunity Stage" value={value} 
+        options={accountValues.data.values} onchange={handleChange}></lightning-combobox>
+    <lightning-input label="Size" onchange={handleSizeChange} class="slds-m-bottom_x-small"></lightning-input>
+    <lightning-input label="Status" onchange={handleStatusChange} class="slds-m-bottom_x-small"></lightning-input>-->
+    <lightning-input label="Contact First Name" onchange={handleCFirstNameChange} class="slds-m-bottom_x-small"></lightning-input>
+    <lightning-input label="Contact Last Name"  onchange={handleCLastNameChange} class="slds-m-bottom_x-small"></lightning-input>
+    <lightning-input label="Contact Email" onchange={handleCEmailChange} class="slds-m-bottom_x-small email"></lightning-input>
+    <lightning-input label="Event Coordinator First Name" onchange={handleECFirstNameChange} class="slds-m-bottom_x-small eclname"></lightning-input>
+    <lightning-input label="Event Coordinator Last Name" onchange={handleECLastNameChange} class="slds-m-bottom_x-small eclname "></lightning-input>
+    <lightning-input title='Event Email' label="Event Coordinator Email" onchange={handleECEmailChange} class="slds-m-bottom_x-small email"></lightning-input>
+    
+
+    <lightning-button label="Save" variant="brand" type="submit" onclick={createRecords}></lightning-button>&ensp;
+    <lightning-button  variant="Brand" label="Cancel" title="Cancel" onclick={cancelMethod} ></lightning-button>
+
+    
+</div>
+</lightning-card>
+</template>
